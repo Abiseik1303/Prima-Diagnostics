@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+
+	<listeners>
+		<listener class-name="com.TestProduct.Listener.ExcelReportListener" />
+	</listeners>
+
+	<test thread-count="5" name="Test">
+		<classes>
+		
+		    <class name="com.TestProduct.Testcases.BillingtoApproval" />
+		    <class name="com.TestProduct.Testcases.DoFromVisit" />
+		    <class name="com.TestProduct.Testcases.AutoAuthrized" />
+		    <class name="com.TestProduct.Testcases.DifferentPaymentMode" />
+		    <class name="com.TestProduct.Testcases.Due" />
+		    <class name="com.TestProduct.Testcases.Discount" />
+		    <class name="com.TestProduct.Testcases.Recollect" />
+		    <class name="com.TestProduct.Testcases.Rerun" />
+		    <class name="com.TestProduct.Testcases.RejectWorkFlow" />
+		    <class name="com.TestProduct.Testcases.NotGiven" />
+		    <class name="com.TestProduct.Testcases.SampleTransfer" />
+		    <class name="com.TestProduct.Testcases.BatchWise" />
+		    <class name="com.TestProduct.Testcases.Cancel" />
+		    <class name="com.TestProduct.Testcases.CancelApprovedVisit" />
+		    <class name="com.TestProduct.Testcases.INVStatusChange" />
+		    <class name="com.TestProduct.Testcases.InvoiceOriginal" />
+		    <class name="com.TestProduct.Testcases.InvoiceDraft" />
+		    <class name="com.TestProduct.Testcases.InvoiceBulk" />
+		    <class name="com.TestProduct.Testcases.SelectiveAuthrization" />
+		    <class name="com.TestProduct.Testcases.PatientDemography" />
+			<class name="com.TestProduct.Testcases.ManageUserPrima" />
+			<class name="com.TestProduct.Testcases.AddNewINV" />
+			<class name="com.TestProduct.Testcases.AddNewGroup" />
+			
+			
+		</classes>
+	</test> <!--
+	Test -->
+</suite> <!--
+Suite -->
