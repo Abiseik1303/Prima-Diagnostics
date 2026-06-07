@@ -111,7 +111,10 @@ public class PhelebotomistPage extends BaseClass{
 	@CacheLookup
 	WebElement AbberentOk;
 	
-
+	@FindBy(how = How.XPATH, using = "//input[@id='chkAberrant']")
+	@CacheLookup
+	WebElement CheckBox;
+	
 	
 	public void Investigationsearch() {
 		

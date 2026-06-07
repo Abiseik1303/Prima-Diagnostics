@@ -1,15 +1,16 @@
 package com.TestProduct.Testcases;
 
 import com.TestProduct.Utility.HelperClass;
-import org.testng.annotations.Test;
 
+import org.pojo.Phlebotomistpojo;
+import org.testng.annotations.Test;
 import com.TestProduct.PageObjects.AccessionPage;
 import com.TestProduct.PageObjects.BillingPage;
 import com.TestProduct.PageObjects.LoginPage;
+import com.TestProduct.PageObjects.PhelebotomistPage;
 import com.TestProduct.PageObjects.RoleSelectionPage;
 import com.TestProduct.PageObjects.RolesPage;
-import com.TestProduct.PageObjects.SampleCollectionPage;
-import com.TestProduct.PageObjects.SampleSearchPage;
+import com.TestProduct.PageObjects.VisitSearch;
 import com.TestProduct.Utility.BaseClass;
 import com.TestProduct.Utility.Closebill;
 import com.TestProduct.Utility.Readconfig;
@@ -20,7 +21,7 @@ public class TC_Outsource_008 extends BaseClass {
 	HelperClass helper = new HelperClass();
 
 	@Test
-	public void Notgiven() throws Throwable {
+	public void OutSource() throws Throwable {
 		LoginPage lp = new LoginPage(driver);
 
 		lp.login(Username, Password);
@@ -72,20 +73,17 @@ public class TC_Outsource_008 extends BaseClass {
 		
 		bp.back();
 
-		RolesPage rolepage = new RolesPage(driver);
-		rolepage.phelbotomist(readconfig.getAccessionrole());
+		RolesPage rolepage1 = new RolesPage(driver);
+		rolepage1.Accession(readconfig.getAccessionrole());
 
 		AccessionPage ap = new AccessionPage(driver);
-		ap.samplesearch();
+		ap.OutsourceFlow(readconfig.getStatusOutsource(), 
+				readconfig.getActiondropdown1(), name);
 
-		Thread.sleep(2000);
+		ap.receiveOutsource(readconfig.getStatusOutsource(), name, readconfig.getActiondropdown2());
 
-		SampleSearchPage searchpage = new SampleSearchPage(driver);
-		searchpage.checkbox(name);
-		searchpage.selectstatus(readconfig.getStatusOutsource());
-		searchpage.Outsourcedetails(readconfig.getActiondropdown1(), readconfig.getActiondropdown2());
-		Thread.sleep(5000);
-
+		VisitSearch v = new VisitSearch(driver);
+		v.visit(name);
 	}
 
 }
