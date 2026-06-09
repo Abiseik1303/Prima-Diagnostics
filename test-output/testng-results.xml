@@ -2,24 +2,24 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-06-07T17:44:36 IST" name="Default suite" finished-at="2026-06-07T17:45:32 IST" duration-ms="56212">
+  <suite started-at="2026-06-09T11:24:04 IST" name="Default suite" finished-at="2026-06-09T11:24:43 IST" duration-ms="38616">
     <groups>
     </groups>
-    <test started-at="2026-06-07T17:44:36 IST" name="Default test" finished-at="2026-06-07T17:45:32 IST" duration-ms="56212">
-      <class name="com.TestProduct.Testcases.TC_Outsource_008">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.TestProduct.Testcases.TC_Outsource_008@37f1104d]" started-at="2026-06-07T17:44:36 IST" name="setup" finished-at="2026-06-07T17:44:40 IST" duration-ms="3975" status="PASS">
+    <test started-at="2026-06-09T11:24:04 IST" name="Default test" finished-at="2026-06-09T11:24:43 IST" duration-ms="38616">
+      <class name="com.TestProduct.Testcases.TC_Managepackage_011">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.TestProduct.Testcases.TC_Managepackage_011@2f54a33d]" started-at="2026-06-09T11:24:04 IST" name="setup" finished-at="2026-06-09T11:24:07 IST" duration-ms="3411" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="OutSource()[pri:0, instance:com.TestProduct.Testcases.TC_Outsource_008@37f1104d]" started-at="2026-06-07T17:44:40 IST" name="OutSource" finished-at="2026-06-07T17:45:31 IST" duration-ms="50581" status="PASS">
+        <test-method signature="managepackage()[pri:0, instance:com.TestProduct.Testcases.TC_Managepackage_011@2f54a33d]" started-at="2026-06-09T11:24:07 IST" name="managepackage" finished-at="2026-06-09T11:24:41 IST" duration-ms="33538" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- OutSource -->
-        <test-method is-config="true" signature="teardown()[pri:0, instance:com.TestProduct.Testcases.TC_Outsource_008@37f1104d]" started-at="2026-06-07T17:45:31 IST" name="teardown" finished-at="2026-06-07T17:45:32 IST" duration-ms="1605" status="PASS">
+        </test-method> <!-- managepackage -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:com.TestProduct.Testcases.TC_Managepackage_011@2f54a33d]" started-at="2026-06-09T11:24:41 IST" name="teardown" finished-at="2026-06-09T11:24:43 IST" duration-ms="1616" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
-      </class> <!-- com.TestProduct.Testcases.TC_Outsource_008 -->
+      </class> <!-- com.TestProduct.Testcases.TC_Managepackage_011 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

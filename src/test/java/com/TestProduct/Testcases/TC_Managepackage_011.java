@@ -16,18 +16,16 @@ public class TC_Managepackage_011 extends BaseClass {
 		LoginPage lp = new LoginPage(driver);
 		lp.login(Username, Password);
 
-		Thread.sleep(3000);
-
 		RoleSelectionPage rsp = new RoleSelectionPage(driver);
 		rsp.selectRole(readconfig.getRole2());
-		Thread.sleep(3000);
 		rsp.selectLocation(readconfig.getLocation());
 
 		ManagePackagePage mpp = new ManagePackagePage(driver);
 		mpp.addgrouptopackage(readconfig.getpackagename(), readconfig.getpackagecode(), readconfig.getpkgcont1(),
 				readconfig.getpkgcont2(), readconfig.getpkgcont3());
 		mpp.addinvtopackage(readconfig.getpkgcont4(), readconfig.getpkgcont5(), readconfig.getpkgcont6());
-		Thread.sleep(2000);
+Thread.sleep(3000);
+		mpp.recheckPackage(readconfig.getpackagename());
 
 	}
 

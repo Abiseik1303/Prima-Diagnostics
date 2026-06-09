@@ -16,12 +16,16 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.TestProduct.Utility.BaseClass;
+import com.TestProduct.Utility.ScreenshotUtils;
 
 public class ManagePackagePage extends BaseClass{
 	WebDriver driver;
+	WebDriverWait wait;
+	ScreenshotUtils screenshot;
 
 	public ManagePackagePage(WebDriver ldriver) {
 		this.driver = ldriver;
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		PageFactory.initElements(driver, this);
 
 	}
@@ -30,7 +34,7 @@ public class ManagePackagePage extends BaseClass{
 	@CacheLookup
 	WebElement Masters;
 
-	@FindBy(how = How.XPATH, using = "//a[normalize-space()='ManagePackage']")
+	@FindBy(how = How.XPATH, using = "//li[contains(text(),'ManagePackage')]")
 	@CacheLookup
 	WebElement managepackage;
 
@@ -50,25 +54,25 @@ public class ManagePackagePage extends BaseClass{
 	@CacheLookup
 	WebElement addbtn;
 
-	@FindBy(how = How.XPATH, using = "//button[@class='ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close']")
+	@FindBy(how = How.XPATH, using = "//button[@class='btn Generic_Button Profile_Data_Txt_Styling Submit_Btn']")
 	@CacheLookup
 	WebElement alertok;
 
 	@FindBy(how = How.XPATH, using = "//input[@id='txtsearchpkg']")
 	@CacheLookup
-	WebElement enterpkgname;
+	WebElement enterpkgname, enterpkgname1;
 
 	@FindBy(how = How.XPATH, using = "//input[@id='btnsearch']")
 	@CacheLookup
-	WebElement searchpkg;
+	WebElement searchpkg, searchpkg1;
 
 	@FindBy(how = How.XPATH, using = "//a[@id='grdpackages_ctl02_lnkshow']")
 	@CacheLookup
-	WebElement eyeicon;
+	WebElement eyeicon, eyeicon1;
 
 	@FindBy(how = How.XPATH, using = "//u[normalize-space()='Add More..']")
 	@CacheLookup
-	WebElement addmore;
+	WebElement addmore, addmore1;
 
 	@FindBy(how = How.XPATH, using = "//select[@name='InvestigationControl1$listGRP']")
 	@CacheLookup
@@ -90,19 +94,19 @@ public class ManagePackagePage extends BaseClass{
 	@CacheLookup
 	WebElement groupLiverclick;
 
-	@FindBy(how = How.XPATH, using = "//option[@value='10965']")
+	@FindBy(how = How.XPATH, using = "//option[@value='20166']")
 	@CacheLookup
 	WebElement groupCBCclick;
 
-	@FindBy(how = How.XPATH, using = "//option[@value='40216']")
+	@FindBy(how = How.XPATH, using = "//option[@value='72842']")
 	@CacheLookup
 	WebElement invvitb12click;
 
-	@FindBy(how = How.XPATH, using = "//option[@value='40261']")
+	@FindBy(how = How.XPATH, using = "//option[@value='72875']")
 	@CacheLookup
 	WebElement invca125click;
 
-	@FindBy(how = How.XPATH, using = "//option[@value='39961']")
+	@FindBy(how = How.XPATH, using = "//option[@value='72823']")
 	@CacheLookup
 	WebElement invzincclick;
 
@@ -113,57 +117,97 @@ public class ManagePackagePage extends BaseClass{
 	@FindBy(how = How.ID_OR_NAME, using = "btnFinish")
 	@CacheLookup
 	WebElement save;
+	
+	@FindBy(how = How.XPATH, using = "//input[@value='Close']")
+	@CacheLookup
+	WebElement Close1;
+	
+	@FindBy(how = How.XPATH, using = "")
+	@CacheLookup
+	WebElement Close2;
 
 	public void addgrouptopackage(String pname, String tcode, String content1, String content2, String content3)
 			throws InterruptedException {
-		Masters.click();
-		managepackage.click();
-		packagename.sendKeys(pname);
-	billingname.sendKeys(pname);
-		packagecode.sendKeys(tcode);
-		addbtn.click();
+		
+		wait.until(ExpectedConditions.elementToBeClickable(Masters)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(managepackage)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(packagename)).sendKeys(pname);
+		wait.until(ExpectedConditions.elementToBeClickable(billingname)).sendKeys(pname);
+		wait.until(ExpectedConditions.elementToBeClickable(packagecode)).sendKeys(tcode);
+		wait.until(ExpectedConditions.elementToBeClickable(addbtn)).click();
+		
 		new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(alertok));
 		alertok.click();
-		enterpkgname.sendKeys(pname);
-		searchpkg.click();
-	    Thread.sleep(3000);
-//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-//		wait.pollingEvery(Duration.ofSeconds(10));
-//		new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.textToBePresentInElement(enterpkgname, enterpkgname.getText()));
-		eyeicon.click();
+		
+		scrollAndSendKeys(enterpkgname, pname);
+		wait.until(ExpectedConditions.elementToBeClickable(searchpkg)).click();
+Thread.sleep(3000);		
+		wait.until(ExpectedConditions.elementToBeClickable(eyeicon)).click();
+		
 		new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(addmore));
 		addmore.click();
+		
 		new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(groupclickbox));
 		groupclickbox.click();
-		grpcontent1.sendKeys(content1);
+		
+		wait.until(ExpectedConditions.elementToBeClickable(grpcontent1)).sendKeys(content1);
+		
 		new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(groupCBCclick));
 		performdoubleclick(groupCBCclick);
-		grpcontent1.sendKeys(content2);
+
+		/*
+		wait.until(ExpectedConditions.elementToBeClickable(grpcontent2)).sendKeys(content2);
+		
 		new WebDriverWait(driver, Duration.ofSeconds(10))
 				.until(ExpectedConditions.elementToBeClickable(groupLipidclick));
 		performdoubleclick(groupLipidclick);
-		grpcontent1.sendKeys(content3);
+		
+		wait.until(ExpectedConditions.elementToBeClickable(grpcontent3)).sendKeys(content3);
+		
 		new WebDriverWait(driver, Duration.ofSeconds(10))
 				.until(ExpectedConditions.elementToBeClickable(groupLiverclick));
-		performdoubleclick(groupLiverclick);
+		performdoubleclick(groupLiverclick);  */
 
 	}
 
+	@SuppressWarnings("static-access")
 	public void addinvtopackage(String inv1, String inv2, String inv3) {
-		Invclickbox.click();
-		grpcontent1.sendKeys(inv1);
+		
+		wait.until(ExpectedConditions.elementToBeClickable(Invclickbox)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(grpcontent1)).sendKeys(inv1);
+		
 		new WebDriverWait(driver, Duration.ofSeconds(10))
 				.until(ExpectedConditions.elementToBeClickable(invvitb12click));
 		performdoubleclick(invvitb12click);
-		grpcontent1.sendKeys(inv2);
+		
+		wait.until(ExpectedConditions.elementToBeClickable(grpcontent2)).sendKeys(inv2);
+		
 		new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(invca125click));
 		performdoubleclick(invca125click);
-		grpcontent1.sendKeys(inv3);
+		
+		wait.until(ExpectedConditions.elementToBeClickable(grpcontent3)).sendKeys(inv3);
+		
 		new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(invzincclick));
 		performdoubleclick(invzincclick);
-		new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(Addcontent));
+		
+		wait.until(ExpectedConditions.elementToBeClickable(Addcontent));
+		screenshot.captureBeforeClick(driver, Addcontent);
 		Addcontent.click();
-		save.click();
+		
+		wait.until(ExpectedConditions.elementToBeClickable(save)).click();
+		
+		
+	}
+	
+	@SuppressWarnings("static-access")
+	public void recheckPackage(String pname) throws InterruptedException {
+		scrollAndSendKeys(enterpkgname1, pname);
+		wait.until(ExpectedConditions.elementToBeClickable(searchpkg1)).click();
+		
+		wait.until(ExpectedConditions.elementToBeClickable(eyeicon1)).click();
+		
+		Thread.sleep(2000);
+		screenshot.captureScreenshot(driver);
 	}
 
 	public void performdoubleclick(WebElement ele) {
