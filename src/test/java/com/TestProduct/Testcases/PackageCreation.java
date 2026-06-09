@@ -8,7 +8,7 @@ import com.TestProduct.PageObjects.RoleSelectionPage;
 import com.TestProduct.Utility.BaseClass;
 import com.TestProduct.Utility.Readconfig;
 
-public class TC_Managepackage_011 extends BaseClass {
+public class PackageCreation extends BaseClass {
 	Readconfig readconfig = new Readconfig();
 
 	@Test

@@ -1,13 +1,10 @@
 package com.TestProduct.Testcases;
 
 import com.TestProduct.Utility.HelperClass;
-
-import org.pojo.Phlebotomistpojo;
 import org.testng.annotations.Test;
 import com.TestProduct.PageObjects.AccessionPage;
 import com.TestProduct.PageObjects.BillingPage;
 import com.TestProduct.PageObjects.LoginPage;
-import com.TestProduct.PageObjects.PhelebotomistPage;
 import com.TestProduct.PageObjects.RoleSelectionPage;
 import com.TestProduct.PageObjects.RolesPage;
 import com.TestProduct.PageObjects.VisitSearch;
@@ -15,7 +12,7 @@ import com.TestProduct.Utility.BaseClass;
 import com.TestProduct.Utility.Closebill;
 import com.TestProduct.Utility.Readconfig;
 
-public class TC_Outsource_008 extends BaseClass {
+public class Outsource extends BaseClass {
 
 	Readconfig readconfig = new Readconfig();
 	HelperClass helper = new HelperClass();
