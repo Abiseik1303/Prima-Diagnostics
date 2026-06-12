@@ -1,7 +1,9 @@
 package com.TestProduct.PageObjects;
 
 import java.time.Duration;
+import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -13,6 +15,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.TestProduct.Utility.BaseClass;
+import com.TestProduct.Utility.Readconfig;
 import com.TestProduct.Utility.ScreenshotUtils;
 
 public class BulkInvoiceGeneration extends BaseClass {
@@ -20,6 +23,7 @@ public class BulkInvoiceGeneration extends BaseClass {
 	WebDriver driver;
 	WebDriverWait wait;
 	ScreenshotUtils screenshot;
+	Readconfig readconfig = new Readconfig();
 	
 	public BulkInvoiceGeneration(WebDriver ldriver) {
 
@@ -67,6 +71,22 @@ public class BulkInvoiceGeneration extends BaseClass {
 	@FindBy(how = How.XPATH, using = "(//button[@type='button'])[3]")
 	@CacheLookup
 	public WebElement Okpopup;
+	
+	@FindBy(how = How.XPATH, using = "//div[@id='CSchedule_CalendarExtender1_popupDiv']")
+	@CacheLookup
+	public WebElement fromDateGrid;
+
+	@FindBy(how = How.XPATH, using = "//div[@id='CSchedule_CalendarExtender1_header']")
+	@CacheLookup
+	public WebElement fromMonthGrid;
+
+	@FindBy(how = How.XPATH, using = "//div[@id='CSchedule_CalendarExtender1_body']")
+	@CacheLookup
+	public WebElement dateGrid;
+
+	@FindBy(how = How.XPATH, using = "//div[@id='CSchedule_CalendarExtender1_nextArrow']")
+	@CacheLookup
+	public WebElement next;
 
 	@SuppressWarnings("static-access")
 	public void bulkinvoice(String a, String b) throws InterruptedException {
@@ -88,6 +108,62 @@ public class BulkInvoiceGeneration extends BaseClass {
 		screenshot.captureBeforeClick(driver, GenerateInvoice);
 		GenerateInvoice.click();
 		
+	}
+	
+	String YYYY = readconfig.getyear();
+	String MMMM = readconfig.getmonth();
+	String DDDD = readconfig.getdate();
+
+	@SuppressWarnings("static-access")
+	public void bulkinvoice1(String a, String b) throws InterruptedException {
+
+		wait.until(ExpectedConditions.elementToBeClickable(BulkRadio)).click();
+		
+		Select select = new Select(wait.until(ExpectedConditions.elementToBeClickable(BussinessType)));
+		select.selectByVisibleText(a);
+
+		// Sleep
+
+		Thread.sleep(2000);
+		wait.until(ExpectedConditions.elementToBeClickable(Clientname)).sendKeys(b);
+
+		wait.until(ExpectedConditions.elementToBeClickable(From)).click();
+
+		new WebDriverWait(driver, Duration.ofSeconds(5))
+				.until(ExpectedConditions.visibilityOf(fromDateGrid));
+
+		while (true) {
+			String MonthYear = fromMonthGrid.getText();
+			String[] arr = MonthYear.split(" ");
+			String month = arr[0];
+			String year = arr[1];
+
+			if (month.equalsIgnoreCase(MMMM) && year.equals(YYYY))
+				break;
+
+			else
+				next.click();
+
+		}
+		
+		List<WebElement> allelements = driver.findElements(By.xpath(
+				"//div[@id='CSchedule_CalendarExtender1_body']//div[contains(@class,'ajax__calendar_day')]"));
+
+		for (WebElement ele : allelements) {
+			String dt = ele.getText();
+			if (dt.equals(DDDD)) {
+				ele.click();
+				break;
+
+			}
+		}
+		wait.until(ExpectedConditions.elementToBeClickable(To)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(Todate)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(Search)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(GenerateInvoice));
+		screenshot.captureBeforeClick(driver, GenerateInvoice);
+		GenerateInvoice.click();
+		wait.until(ExpectedConditions.elementToBeClickable(Okpopup)).click();
 	}
 
 }

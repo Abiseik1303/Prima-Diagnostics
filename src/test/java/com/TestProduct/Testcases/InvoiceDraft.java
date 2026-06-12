@@ -69,7 +69,7 @@ public class InvoiceDraft extends BaseClass{
 		i.schedules();
 		
 		Invoice i1 = new Invoice(driver);
-		i1.invoice(readconfig.Bussinesstype(), readconfig.Client());
+		i1.invoice1(readconfig.Bussinesstype(), readconfig.Client());
 		
 		Invoice i2 = new Invoice(driver);
 		i2.selectclient();
