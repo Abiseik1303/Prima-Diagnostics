@@ -106,13 +106,13 @@ public class InvoiceBulk extends BaseClass {
 		i.schedules();
 		
 		BulkInvoiceGeneration b = new BulkInvoiceGeneration(driver);
-		b.bulkinvoice(readconfig.Bussinesstype(), readconfig.bulkclientname());
+		b.bulkinvoice1(readconfig.Bussinesstype(), readconfig.bulkclientname());
 		
 		ClientPaymentTracker c = new ClientPaymentTracker(driver);
 		c.tracker();
 		
-		c.trackerInvoice(readconfig.bulkclientname(), readconfig.Showpdf());
-		
+		c.bulk(readconfig.bulkclientname(), readconfig.Showpdf());
 		
 	}
+	
 }

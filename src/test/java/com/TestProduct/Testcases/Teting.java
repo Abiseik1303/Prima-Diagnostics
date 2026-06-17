@@ -2,8 +2,9 @@ package com.TestProduct.Testcases;
 
 import org.testng.annotations.Test;
 import com.TestProduct.PageObjects.BillingPage;
+import com.TestProduct.PageObjects.ClientPaymentTracker;
+import com.TestProduct.PageObjects.Invoice;
 import com.TestProduct.PageObjects.LoginPage;
-import com.TestProduct.PageObjects.PhelebotomistPage;
 import com.TestProduct.PageObjects.RoleSelectionPage;
 import com.TestProduct.PageObjects.RolesPage;
 import com.TestProduct.Utility.BaseClass;
@@ -18,59 +19,73 @@ public class Teting extends BaseClass{
 	
 	@Test
 	public void testingDummy() throws Exception {
-		LoginPage lp = new LoginPage(driver);
+		
+			LoginPage lp = new LoginPage(driver);
 
-		lp.login(Username, Password);
-	
-		RoleSelectionPage roleselection = new RoleSelectionPage(driver);
+			lp.login(Username, Password);
 
-		roleselection.selectRole(readconfig.getRole1());
+			RoleSelectionPage roleselection = new RoleSelectionPage(driver);
 
-		roleselection.selectLocation(readconfig.getLocation());
-		
-		BillingPage p = new BillingPage(driver);
-		p.LabQuickBilling();
-		
-		BillingPage bp = new BillingPage(driver);
-		bp.None();
-		
-		bp.PatientSalutation(readconfig.getSalutation());
-		
+			roleselection.selectRole(readconfig.getRole1());
 
-		String name = helper.generatedname();
-		String age = helper.generatedage();
-		String mobno = helper.generatedmobno();
+			roleselection.selectLocation(readconfig.getLocation());
+			
+			BillingPage bp = new BillingPage(driver);
+			bp.LabQuickBilling();
+			
+			bp.None();
+			
+			bp.PatientSalutation(readconfig.getSalutation());
+			
 
-		bp.PatientName(name);
+			String name = helper.generatedname();
+			String age = helper.generatedage();
+			String mobno = helper.generatedmobno();
 
-		bp.PatientAge(age);
+			bp.PatientName(name);
+			
 
-		bp.PatientMobile(mobno);
+			bp.PatientAge(age);
+			
+			
+
+			bp.PatientMobile(mobno);
+			
+			
+			bp.PatientEmail(readconfig.getEmail());
+			
+			bp.client(readconfig.Clientcode());
+			
+			bp.ReferringDR(readconfig.getRefdr());
+			
+			bp.FileUpload();
+			
+			bp.AddTest(readconfig.getTest1());
+			
+			bp.Addbtn();
 		
-		bp.PatientEmail(readconfig.getEmail());
-		
-		bp.ReferringDR(readconfig.getRefdr());
-		
-		bp.FileUpload();
-		
-		bp.AddTest(readconfig.getTest1());
-		
-		bp.Addbtn();
-		
-		bp.AddPayment();
-		
-		bp.Generatebill();
-	
-		bp.back();
-		
-		RolesPage p1 = new RolesPage(driver);
-		p1.phelbotomist(readconfig.getphelborole());
-		
-		PhelebotomistPage phlebo = new PhelebotomistPage(driver);
-		phlebo.samplecollect(name, readconfig.getstatusCollected());
-		
-		RolesPage acces = new RolesPage(driver);
-		acces.Accession(readconfig.getAccessionrole());
+			bp.Generatebill();
+			
+			bp.back();
+			
+			RolesPage r = new RolesPage(driver);
+			r.CreditController(readconfig.getCreditcontroller());
+
+			Invoice i = new Invoice(driver);
+			i.schedules();
+			
+			Invoice i1 = new Invoice(driver);
+			i1.invoice1(readconfig.Bussinesstype(), readconfig.Client());
+			
+			Invoice i2 = new Invoice(driver);
+			i2.selectclient();
 				
+			i2.generateInvoice(readconfig.InvoiceType());
+			
+			ClientPaymentTracker c = new ClientPaymentTracker(driver);
+
+			c.tracker();
+			
+			c.trackerInvoice(readconfig.Client(), readconfig.SelectAction());
 }
 }
