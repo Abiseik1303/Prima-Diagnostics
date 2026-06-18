@@ -493,7 +493,7 @@ public class BillingPage extends BaseClass {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		WebElement fileUploadInput = wait.until(
 				ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='FileUploadTrf1']")));
-		fileUploadInput.sendKeys("C:\\Users\\Abiseik C\\OneDrive\\Pictures\\OIP.jpg");
+		fileUploadInput.sendKeys("C:\\Users\\dell\\eclipse-workspace\\Prima-Diagnostics\\Images\\Img1.png");
 		scrollAndClick(uploadfile);
 	}
 	
@@ -502,7 +502,7 @@ public class BillingPage extends BaseClass {
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	    WebElement fileUploadInput = wait.until(
 	        ExpectedConditions.elementToBeClickable(By.id("FileUpload1")));
-	    fileUploadInput.sendKeys("C:\\Users\\Abiseik C\\OneDrive\\Pictures\\OIP.jpg");
+	    fileUploadInput.sendKeys("C:\\Users\\dell\\eclipse-workspace\\Prima-Diagnostics\\Images\\Img1.png");
 	}
 	
 	@SuppressWarnings("static-access")

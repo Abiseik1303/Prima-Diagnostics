@@ -8,7 +8,7 @@ public class Readconfig {
 	Properties pro;
 
 	public Readconfig() {
-		File file = new File("C:\\Users\\Abiseik C\\eclipse-workspace\\PrimaDiagnostics4.8\\Configurations\\Config.properties");
+		File file = new File("C:\\Users\\dell\\eclipse-workspace\\Prima-Diagnostics\\Configurations\\Config.properties");
 		try {
 			FileInputStream fis = new FileInputStream(file);
 			pro = new Properties();
